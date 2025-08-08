@@ -1,0 +1,21 @@
+{
+  "data_period": {
+    "start": "2015-07-01",
+    "end": "2025-07-30"
+  },
+  "assets_analyzed": [
+    "TSLA",
+    "BND",
+    "SPY"
+  ],
+  "key_observations": {
+    "highest_return_asset": "TSLA",
+    "lowest_volatility_asset": "BND",
+    "best_sharpe_ratio": "SPY",
+    "most_volatile_asset": "TSLA"
+  },
+  "correlation_analysis": {
+    "highest_correlation": "('SPY', 'SPY')",
+    "lowest_correlation": "('BND', 'TSLA')"
+  }
+}
