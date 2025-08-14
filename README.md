@@ -131,3 +131,9 @@ jupyter notebook 01_data_collection.ipynb
 jupyter notebook 02_data_preprocessing.ipynb
 jupyter notebook 03_eda_analysis.ipynb
 ```
+
+# Task 2: Time Series Forecasting Models
+
+## Objective
+
+Develop and compare forecasting models (ARIMA/SARIMA and LSTM) to predict future prices of TSLA, BND, and SPY using historical data from 2015-2023, evaluating performance on 2024-2025 test data.
