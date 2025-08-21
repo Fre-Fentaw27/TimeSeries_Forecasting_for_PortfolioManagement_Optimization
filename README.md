@@ -140,7 +140,7 @@ jupyter notebook 03_eda_analysis.ipynb
 
 Develop and compare forecasting models (ARIMA/SARIMA and LSTM) to predict future prices of TSLA, BND, and SPY using historical data from 2015-2023, evaluating performance on 2024-2025 test data.
 
-### Task 3: Optimize Portfolio Based on Forecast
+# Task 3: Optimize Portfolio Based on Forecast
 
 This part of the project focuses on applying modern portfolio theory to optimize an investment portfolio. The primary goal is to determine the ideal asset allocation (the **weights**) for a portfolio of assets based on their historical performance and a specific forecast for one of the assets. We use **PyPortfolioOpt**, a powerful Python library, for this task.
 
