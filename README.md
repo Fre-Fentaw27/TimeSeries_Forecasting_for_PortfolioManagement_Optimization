@@ -10,6 +10,7 @@ This project analyzes three key financial assets (TSLA, BND, SPY) from July 2015
 
 ## Folder Structure
 
+```bash
 TimeSeries_Forecasting_for_PortfolioManagement_Optimization/
 │
 ├── data/
@@ -41,6 +42,7 @@ TimeSeries_Forecasting_for_PortfolioManagement_Optimization/
 │ └── eda_insights.json # Key findings from EDA
 │
 └── README.md # This documentation file
+```
 
 ## Task 1: Data Pipeline Implementation
 
@@ -137,3 +139,36 @@ jupyter notebook 03_eda_analysis.ipynb
 ## Objective
 
 Develop and compare forecasting models (ARIMA/SARIMA and LSTM) to predict future prices of TSLA, BND, and SPY using historical data from 2015-2023, evaluating performance on 2024-2025 test data.
+
+### Task 3: Optimize Portfolio Based on Forecast
+
+This part of the project focuses on applying modern portfolio theory to optimize an investment portfolio. The primary goal is to determine the ideal asset allocation (the **weights**) for a portfolio of assets based on their historical performance and a specific forecast for one of the assets. We use **PyPortfolioOpt**, a powerful Python library, for this task.
+
+#### 1. Data Preparation and Alignment
+
+The initial step involves combining historical price data for a bond ETF (**BND**) and a market index ETF (**SPY**) with a forecasted return series for **TSLA**. A crucial part of this step is ensuring that all data is correctly **aligned by date**. Misaligned data can lead to a **singular covariance matrix**, which will cause the optimization to fail. The code addresses this by concatenating the return series into a single, clean DataFrame.
+
+#### 2. Calculating Expected Returns ($\mu$) and Covariance Matrix ($\Sigma$)
+
+Two fundamental inputs for portfolio optimization are:
+
+- **Expected Annual Returns ($\mu$)**: The projected return for each asset over a year.
+- **Covariance Matrix ($\Sigma$)**: A matrix that measures how the returns of each asset move in relation to one another.
+
+We calculate these using PyPortfolioOpt's built-in functions, `mean_historical_return` and `sample_cov`. To prevent numerical instability and solver errors, the covariance matrix is **regularized** by adding a small positive value to its diagonal. This ensures the matrix is **positive definite**, a requirement for the optimization.
+
+#### 3. Portfolio Optimization
+
+With the expected returns and covariance matrix, we use PyPortfolioOpt's `EfficientFrontier` class to solve two classic optimization problems:
+
+- **Maximum Sharpe Ratio Portfolio**: This portfolio aims to maximize the return per unit of risk, identifying the most efficient allocation on the frontier.
+- **Minimum Volatility Portfolio**: This portfolio aims to minimize the overall risk (volatility) of the portfolio.
+
+#### 4. Plotting the Efficient Frontier
+
+The **efficient frontier** is a graph that shows the set of optimal portfolios that provide the highest expected return for a given level of risk. The code plots this curve, marking the location of the **Max Sharpe** and **Min Volatility** portfolios. This visualization helps in understanding the trade-off between risk and return and provides a visual representation of the optimal portfolios.
+
+#### 5. Summarizing Results
+
+Finally, the optimal weights for both the Max Sharpe and Min Volatility portfolios are printed. These weights represent the percentage of the total portfolio value that should be allocated to each asset to achieve the desired optimization goal.
+EOF
